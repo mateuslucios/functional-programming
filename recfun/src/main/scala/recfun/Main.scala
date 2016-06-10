@@ -15,18 +15,19 @@ object Main {
    */
   def pascal(c: Int, r: Int): Int = {
 
-    def factorial(n : Int) : Int = if (n == 0) 1 else n * factorial(n - 1)
+    def factorial(n: Int): Int = if (n == 0) 1 else n * factorial(n - 1)
 
     factorial(r) / (factorial(c) * factorial(r - c))
   }
-  
+
+
   /**
    * Exercise 2
    */
-    def balance(chars: List[Char]): Boolean = ???
-  
+  def balance(chars: List[Char]): Boolean = ???
+
   /**
    * Exercise 3
    */
-    def countChange(money: Int, coins: List[Int]): Int = ???
-  }
+  def countChange(money: Int, coins: List[Int]): Int = ???
+}
