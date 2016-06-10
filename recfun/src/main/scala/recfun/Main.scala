@@ -2,12 +2,17 @@ package recfun
 
 object Main {
   def main(args: Array[String]) {
-    println("Pascal's Triangle")
-    for (row <- 0 to 10) {
-      for (col <- 0 to row)
-        print(pascal(col, row) + " ")
-      println()
-    }
+//    println("Pascal's Triangle")
+//    for (row <- 0 to 10) {
+//      for (col <- 0 to row)
+//        print(pascal(col, row) + " ")
+//      println()
+//    }
+
+    //println(balance("()".toList))
+    println(balance(")(".toList))
+    println(balance(":-)".toList))
+
   }
 
   /**
@@ -24,7 +29,27 @@ object Main {
   /**
    * Exercise 2
    */
-  def balance(chars: List[Char]): Boolean = ???
+  def balance(chars: List[Char]): Boolean = {
+
+    def loop(chars: List[Char], brackets: List[Char]): Boolean = {
+
+      if (chars.isEmpty) {
+        brackets.isEmpty
+      } else if (chars.head == '(') {
+        loop(chars.tail, brackets :+ chars.head)
+      } else if (chars.head == ')' && brackets.isEmpty) {
+        false
+      } else if (chars.head == ')' && brackets.head == '(') {
+        loop(chars.tail, brackets.tail)
+      } else {
+        loop(chars.tail, brackets)
+      }
+
+    }
+
+    loop(chars, List())
+
+  }
 
   /**
    * Exercise 3
