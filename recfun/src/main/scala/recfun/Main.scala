@@ -2,17 +2,19 @@ package recfun
 
 object Main {
   def main(args: Array[String]) {
-//    println("Pascal's Triangle")
-//    for (row <- 0 to 10) {
-//      for (col <- 0 to row)
-//        print(pascal(col, row) + " ")
-//      println()
-//    }
+    //    println("Pascal's Triangle")
+    //    for (row <- 0 to 10) {
+    //      for (col <- 0 to row)
+    //        print(pascal(col, row) + " ")
+    //      println()
+    //    }
 
-    //println(balance("()".toList))
-    println(balance(")(".toList))
-    println(balance(":-)".toList))
+    // println(balance("()".toList))
+    // println(balance(")(".toList))
+    // println(balance(":-)".toList))
 
+    println(countChange(4, List(1, 2)))
+    println(countChange(5, List(1, 2, 3)))
   }
 
   /**
@@ -54,5 +56,18 @@ object Main {
   /**
    * Exercise 3
    */
-  def countChange(money: Int, coins: List[Int]): Int = ???
+  def countChange(money: Int, coins: List[Int]): Int = {
+
+    def loop(money: Int, coins: List[Int]): Int = {
+
+      if (money < 0) 0
+      else if (money == 0) 1
+      else if (coins.isEmpty) 0
+      else {
+        loop(money - coins.head, coins) + loop(money, coins.tail)
+      }
+    }
+
+    loop(money, coins)
+  }
 }
